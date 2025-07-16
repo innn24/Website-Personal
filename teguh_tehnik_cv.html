@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Teguh Tehnik Engineering</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.4;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 210mm;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            min-height: 297mm;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 30px 40px;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1), transparent);
+        }
+
+        .header-left {
+            position: relative;
+            z-index: 2;
+        }
+
+        .company-name {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .tagline {
+            font-size: 16px;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        .header-right {
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-button {
+            background: rgba(255,255,255,0.2);
+            border: 2px solid white;
+            color: white;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-button:hover {
+            background: white;
+            color: #1e3c72;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #1e3c72;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: #2a5298;
+        }
+
+        /* About Section */
+        .about-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .about-text {
+            text-align: justify;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+        }
+
+        .stats-container {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #e9ecef;
+        }
+
+        .stat-item {
+            margin-bottom: 25px;
+        }
+
+        .stat-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: bold;
+            color: #1e3c72;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.2;
+        }
+
+        /* Services Section */
+        .services-intro {
+            margin-bottom: 30px;
+            text-align: justify;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .service-item {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        .service-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #1e3c72;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .service-subtitle {
+            font-size: 14px;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Testimonials Section */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .testimonial {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #1e3c72;
+            position: relative;
+        }
+
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            font-size: 40px;
+            color: #1e3c72;
+            opacity: 0.3;
+        }
+
+        .testimonial-text {
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            text-align: justify;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #1e3c72;
+            text-align: right;
+            font-size: 14px;
+        }
+
+        /* Contact Section */
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .contact-info {
+            background: #1e3c72;
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .contact-info h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-item {
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .contact-item strong {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .contact-item span {
+            font-size: 14px;
+        }
+
+        .working-hours {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid #e9ecef;
+        }
+
+        .working-hours h3 {
+            font-size: 20px;
+            color: #1e3c72;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hours-table {
+            width: 100%;
+        }
+
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .hours-row:last-child {
+            border-bottom: none;
+        }
+
+        .hours-day {
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .hours-time {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .weekend-note {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                max-width: none;
+            }
+
+            .header {
+                padding: 20px;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-right {
+                margin-top: 20px;
+            }
+
+            .company-name {
+                font-size: 24px;
+            }
+
+            .main-content {
+                padding: 20px;
+            }
+
+            .about-layout,
+            .contact-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .stats-container {
+                padding: 20px;
+            }
+
+            .stat-number {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 5px;
+            }
+
+            .header {
+                padding: 15px;
+            }
+
+            .company-name {
+                font-size: 20px;
+            }
+
+            .main-content {
+                padding: 15px;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+
+            .about-text,
+            .services-intro {
+                font-size: 14px;
+            }
+
+            .service-title {
+                font-size: 16px;
+            }
+
+            .testimonial-text {
+                font-size: 13px;
+            }
+
+            .contact-info,
+            .working-hours {
+                padding: 20px;
+            }
+
+            .stat-number {
+                font-size: 24px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .container {
+                margin: 0;
+                box-shadow: none;
+                max-width: none;
+            }
+
+            .contact-button {
+                border: 2px solid #1e3c72;
+                color: #1e3c72;
+                background: white;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <h1 class="company-name">Teguh Tehnik Engineering</h1>
+                <p class="tagline">Precision. Reliability. Performance</p>
+            </div>
+            <div class="header-right">
+                <button class="contact-button" onclick="document.getElementById('contact-section').scrollIntoView({behavior: 'smooth'})">HUBUNGI KAMI</button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- About Section -->
+            <section class="section">
+                <h2 class="section-title">Tentang kami</h2>
+                <div class="about-layout">
+                    <div class="about-text">
+                        <p>CV. Teguh Tehnik Engineering merupakan perusahaan yang bergerak di bidang penyediaan dan pemasokan consumable supply serta suku cadang (sparepart) untuk berbagai kebutuhan industri. Kami berfokus pada penyediaan produk-produk berkualitas tinggi seperti suku cadang presisi dan komponen mesin.</p>
+                        
+                        <p>Dengan dukungan tim yang berpengalaman dan memiliki keahlian teknis di bidangnya, kami berkomitmen untuk menjadi mitra terpercaya bagi industri dalam memastikan kelancaran proses produksi. Kami tidak hanya menyediakan produk tetapi juga menawarkan solusi yang inovatif dan layanan profesional yang mampu meningkatkan efisiensi operasional client.</p>
+                        
+                        <p>Kepercayaan dan kepuasan pelanggan menjadi prioritas utama kami. Oleh karena itu setiap produk dan layanan yang kami berikan dirancang untuk mendukung pertumbuhan industri secara berkelanjutan</p>
+                    </div>
+                    <aside class="stats-container">
+                        <div class="stat-item">
+                            <span class="stat-number">2014</span>
+                            <div class="stat-label">Tahun<br>Berdiri</div>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">5</span>
+                            <div class="stat-label">Karyawan</div>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">2.000+</span>
+                            <div class="stat-label">Proyek<br>Selesai</div>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+
+            <!-- Services Section -->
+            <section class="section">
+                <h2 class="section-title">Layanan Kami</h2>
+                <div class="services-intro">
+                    <p>CV. Teguh Tehnik Engineering melayani pembuatan suku cadang presisi, seperti gear, poros, dan komponen mesin lainnya sesuai kebutuhan industri. Kami juga menyediakan jasa bubut dan freis untuk pembuatan maupun perbaikan part mekanik. Selain itu, tersedia jasa fabrikasi ringan meliputi pemotongan, pengelasan, dan perakitan logam. Semua layanan dikerjakan oleh tenaga profesional dengan hasil presisi dan waktu pengerjaan yang efisien.</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-item">
+                        <h3 class="service-title">Pembuatan Suku Cadang Presisi</h3>
+                        <p class="service-subtitle">(Precision Machining)</p>
+                    </div>
+                    <div class="service-item">
+                        <h3 class="service-title">Jasa Bubut dan Freis</h3>
+                        <p class="service-subtitle">(Turning & Milling Services)</p>
+                    </div>
+                    <div class="service-item">
+                        <h3 class="service-title">Jasa Fabrikasi Ringan</h3>
+                        <p class="service-subtitle">Project</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials Section -->
+            <section class="section">
+                <h2 class="section-title">Feedback</h2>
+                <div class="testimonials-grid">
+                    <article class="testimonial">
+                        <div class="testimonial-text">
+                            CV. Teguh Tehnik Engineering sangat membantu kami dalam pengadaan suku cadang mesin industri dengan kualitas yang konsisten dan pelayanan cepat. Mereka responsif dan paham kebutuhan teknis kami.
+                        </div>
+                        <div class="testimonial-author">- PT Pilar Logam Perkasa</div>
+                    </article>
+                    <article class="testimonial">
+                        <div class="testimonial-text">
+                            Kami sangat puas dengan hasil pengerjaan dan akurasi produk mereka. Tim mereka profesional, dan selalu menyelesaikan proyek tepat waktu. Sangat direkomendasikan.
+                        </div>
+                        <div class="testimonial-author">- Firma Mikael Engineering</div>
+                    </article>
+                    <article class="testimonial">
+                        <div class="testimonial-text">
+                            Keandalan dan kualitas dari CV. Teguh Tehnik membuat kami terus kembali menggunakan jasanya. Pelayanan after-sales mereka juga luar biasa.
+                        </div>
+                        <div class="testimonial-author">- Agatha Krisna Theodore</div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section class="section" id="contact-section">
+                <h2 class="section-title">Hubungi Kami</h2>
+                <div class="contact-layout">
+                    <div class="contact-info">
+                  
+                        <div class="contact-item">
+                            <strong>Alamat:</strong>
+                            <span>jl. gaga semanan no.15 kp.gaga lontar rt.05, RT.5/RW.4, 04, Semanan, Kec. Kalideres, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11850<br>Jakarta Barat</span>
+                        </div>
+                        <div class="contact-item">
+                            <strong>Telepon:</strong>
+                            <span><a href="tel:087782982412" style="color: white; text-decoration: none;">087782982412</a></span>
+                        </div>
+                        <div class="contact-item">
+                            <strong>Email:</strong>
+                            <span><a href="mailto:teguhtehnik2@gmail.com" style="color: white; text-decoration: none;">teguhtehnik2@gmail.com</a></span>
+                        </div>
+                    </div>
+                    <div class="working-hours">
+                        <h3>Jam Kerja</h3>
+                        <div class="hours-table">
+                            <div class="hours-row">
+                                <span class="hours-day">Senin-Jumat</span>
+                                <span class="hours-time">08.00-17.00 WIB</span>
+                            </div>
+                            <div class="hours-row">
+                                <span class="hours-day">Sabtu</span>
+                                <span class="hours-time">08.00-16.00 WIB</span>
+                            </div>
+                        </div>
+                        <div class="weekend-note">
+                            *Akhir pekan dengan janji
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Smooth scrolling for contact button
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactButton = document.querySelector('.contact-button');
+            const contactSection = document.getElementById('contact-section');
+            
+            if (contactButton && contactSection) {
+                contactButton.addEventListener('click', function() {
+                    contactSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                });
+            }
+        });
+
+        // Add some interactive features
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click effect to service items
+            const serviceItems = document.querySelectorAll('.service-item');
+            serviceItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    this.style.transform = 'scale(1.05)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 200);
+                });
+            });
+
+            // Add hover effect to testimonials
+            const testimonials = document.querySelectorAll('.testimonial');
+            testimonials.forEach(testimonial => {
+                testimonial.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.2)';
+                });
+                
+                testimonial.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = 'none';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
